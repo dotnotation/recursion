@@ -16,3 +16,9 @@ function factorial(num){
     return num * factorial(num - 1)
     // we can't just have line 16 as we need the base case
 }
+
+function factorial(num){
+    if (num < 0) return 0;
+    if (num <= 1) return 1;
+    return num * factorial(num-1);
+ }
