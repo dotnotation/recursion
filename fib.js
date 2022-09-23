@@ -5,6 +5,8 @@
 // ex. fib(4) = 3
 // fib(10) = 55
 
-function fib(){
-
+function fib(num){
+    if (temp === num) return temp
+    if (temp === 0 || undefined) temp = 1
+    return fib(num, temp * temp)
 }
