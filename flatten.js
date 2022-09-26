@@ -9,3 +9,37 @@ function flatten(arr){
     return arr.flat(Infinity)
     // this technically works but isn't recursive
 }
+
+function flatten(oldArr){
+    var newArr = []
+        for(var i = 0; i < oldArr.length; i++){
+            // iterate through oldArr
+            console.log(Array.isArray(oldArr[i]), "old", oldArr, "new", newArr)
+          if(Array.isArray(oldArr[i])){
+            // if it is an array
+                newArr = newArr.concat(flatten(oldArr[i]))
+                console.log("if", newArr, "old", oldArr)
+                // concat returns a new array and is used to merge arrays
+          } else {
+              // if it is just a number
+                newArr.push(oldArr[i])
+                console.log("else", newArr, "old", oldArr)
+                // push adds elements to the end of an array and returns the length of updated array
+          }
+    } 
+    return newArr;
+} 
+
+// if it is not in a nested array, the number gets pushed to the end of our newArr
+// if during iteration a nested array is hit, it get flattened
+
+//  else [1] old (4) [1, 2, 3, Array(3)]
+//  else (2) [1, 2] old (4) [1, 2, 3, Array(3)]
+//  else (3) [1, 2, 3] old (4) [1, 2, 3, Array(3)]
+//  else [4] old (3) [4, 5, Array(2)]
+//  else (2) [4, 5] old (3) [4, 5, Array(2)]
+//  else [6] old (2) [6, 7]
+//  else (2) [6, 7] old (2) [6, 7]
+//  if (4) [4, 5, 6, 7] old (3) [4, 5, Array(2)]
+//  if (7) [1, 2, 3, 4, 5, 6, 7] old (4) [1, 2, 3, Array(3)]
+//  (7) [1, 2, 3, 4, 5, 6, 7]
