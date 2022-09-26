@@ -14,3 +14,9 @@ function reverse(str){
         // str.charAt(0) = "a"
         // "wesomea"
 }
+
+// other solution
+function reverse(str){
+	if(str.length <= 1) return str;
+	return reverse(str.slice(1)) + str[0];
+}
