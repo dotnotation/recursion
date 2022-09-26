@@ -5,7 +5,7 @@
 function flatten(arr){
     // .flat() creates a new array with all sub-array elements concated into it recursively up to the specified depth
     // could use spread operator and concat [].concat(...arr)
-    // what condition stops this from running/ how to check if arr is completely flat
-    if (arr.length === 0) return arr
-    return flatten(arr.flat())
+    // what condition stops this from running/ how to check if arr is completely flat/ check if array depth is 1
+    return arr.flat(Infinity)
+    // this technically works but isn't recursive
 }
