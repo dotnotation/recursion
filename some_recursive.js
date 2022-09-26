@@ -5,5 +5,7 @@
 // ex. someRecursive([1, 2, 3, 4], isOdd) = true
 
 function someRecursive(arr, call){
-    
+    if (call(arr) === true) return true
+    if (arr.length !== 0) return someRecursive(arr.slice(1), call)
+    return false
 }
