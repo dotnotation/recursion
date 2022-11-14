@@ -30,6 +30,19 @@ function flatten(oldArr){
     return newArr;
 } 
 
+// Colt Steele's solution without comments
+function flatten(oldArr){
+    var newArr = []
+        for(var i = 0; i < oldArr.length; i++){
+          if(Array.isArray(oldArr[i])){
+                newArr = newArr.concat(flatten(oldArr[i]))
+          } else {
+                newArr.push(oldArr[i])
+          }
+    } 
+    return newArr;
+  }
+
 // if it is not in a nested array, the number gets pushed to the end of our newArr
 // if during iteration a nested array is hit, it get flattened
 
