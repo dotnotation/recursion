@@ -8,9 +8,12 @@ function collectStrings(obj){
     for (var key in obj){
         if (typeof obj[key] === 'string'){
             results.push(obj[key])
+        } else if (typeof obj[key] === 'object'){
+            results = results.concat(collectStrings(obj[key]))
         }
     }
-
+    
+    return results
 }
 
 const obj = {
@@ -30,3 +33,24 @@ const obj = {
 }
 
 collectStrings(obj) // ["foo", "bar", "baz"])
+
+// collectStrings Solution: Helper Method Recursion Version
+
+function collectStrings(obj) {
+    var stringsArr = [];
+ 
+    function gatherStrings(o) {
+        for(var key in o) {
+            if(typeof o[key] === 'string') {
+                stringsArr.push(o[key]);
+            }
+            else if(typeof o[key] === 'object') {
+                return gatherStrings(o[key]);
+            }
+        }
+    }
+ 
+    gatherStrings(obj);
+ 
+    return stringsArr;
+}
